@@ -54,7 +54,7 @@ const Articles = () => {
     <Box className="food" p={{ base: 5, md: 20 }}>
       <Text
         fontWeight={600}
-        fontSize={{ base: 28, md: 45 }}
+        fontSize={{ base: 24, md: 45 }}  // Adjusted for mobile
         color="#0E2368"
       >
         Latest Articles
@@ -63,55 +63,61 @@ const Articles = () => {
       <Flex
         py={{ base: 4, md: 8 }}
         ref={food}
-        gap={10}
+        gap={{ base: 5, md: 10 }}  // Adjusted gap for mobile
         overflow="hidden"
         scrollSnapType="x mandatory"
         scrollBehavior="smooth"
         zIndex={0}
         className="carousel-container"
+        flexWrap={{ base: "wrap", md: "nowrap" }}  // Wrap items on mobile
       >
         {foodData.map((resource, index) => {
           return (
-            <Flex key={index} flexDir="column" textAlign="center" scrollSnapAlign="start" border="1px solid"
+            <Flex 
+              key={index} 
+              flexDir="column" 
+              textAlign="center" 
+              scrollSnapAlign="start" 
+              border="1px solid"
               borderColor="gray.200"
               borderRadius={5}
               gap={3}
-              px={10}
+              px={{ base: 5, md: 10 }}  // Adjusted padding for mobile
               py={5}
               shadow="sm"
               alignItems="center"
               justifyContent="center"
               className="food-item"
+              width={{ base: "100%", md: "auto" }}  // Full width on mobile
             >
               <Image
                 borderRadius={10}
-                width={{ base: 200, md: 300 }}
-                className="rounded-full"
+                width={{ base: 150, md: 300 }}  // Smaller image for mobile
                 src={resource.imageUrl}
                 alt="food__image"
               />
               <Text
-                fontSize={{ base: "16px", md: "21px" }}
+                fontSize={{ base: "14px", md: "21px" }}  // Smaller font size for mobile
                 color="#0E2368"
                 fontWeight={700}
-                width={{ base: 180, md: 300 }}
+                width={{ base: 160, md: 300 }}
               >
                 {resource.title}
               </Text>
-              <Text fontSize={{ base: "12x", md: "15px" }} color="#444957">
+              <Text fontSize={{ base: "12px", md: "15px" }} color="#444957">
                 {resource.desc}
               </Text>
               <Button
                 variant="outline"
-                size="md"
-                px={10}
+                size="sm"  // Smaller button size for mobile
+                px={6}  // Reduced padding
                 margin={{ base: "auto", md: 0 }}
                 width="max-content"
                 color="#424961"
                 borderRadius={40}
                 borderColor="#424961"
                 borderWidth={2}
-                fontSize={{ base: "12x", md: "15px" }}
+                fontSize={{ base: "12px", md: "15px" }}  // Smaller font size
               >
                 Read More
               </Button>
@@ -140,7 +146,8 @@ const Articles = () => {
           _disabled={{ opacity: 0, cursor: "not-allowed" }}
           transition="all ease-in-out duration-300"
           disabled={isDisabled("prev")}
-          className="absolute text-white w-10 text-center opacity-70 hover:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed z-10 transition-all ease-in-out duration-300 bg-gray-400 rounded-full h-fit top-[42%] p-3"
+          p={{ base: 2, md: 3 }}  // Smaller padding for mobile
+          className="text-white w-8 h-8 md:w-10 md:h-10 text-center opacity-70 hover:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed z-10 transition-all ease-in-out duration-300 bg-gray-400 rounded-full"
         >
           <svg
             width="12px"
@@ -167,7 +174,8 @@ const Articles = () => {
           _disabled={{ opacity: 0, cursor: "not-allowed" }}
           transition="all ease-in-out duration-300"
           disabled={isDisabled("next")}
-          className="text-white w-10 text-center hover:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed z-10 transition-all ease-in-out duration-300 absolute right-[35px] rounded-full h-fit p-3 top-[42%] bg-gray-400 opacity-70"
+          p={{ base: 2, md: 3 }}  // Smaller padding for mobile
+          className="text-white w-8 h-8 md:w-10 md:h-10 text-center opacity-70 hover:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed z-10 transition-all ease-in-out duration-300 bg-gray-400 rounded-full"
         >
           <svg
             width="10px"
